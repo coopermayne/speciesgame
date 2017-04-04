@@ -13,6 +13,7 @@ export class Page2 {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
+    console.log(navParams);
     this.selectedItem = navParams.get('item');
 
     // Let's populate this page with some filler content for funzies
@@ -27,6 +28,10 @@ export class Page2 {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Page1');
   }
 
   itemTapped(event, item) {

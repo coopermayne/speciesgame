@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
 
 /*
   Generated class for the Login page.
@@ -13,7 +14,25 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  username: string = "";j
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private af: AngularFire) {}
+
+  login() {
+    this.af.auth.login({
+      provider: AuthProviders.Anonymous,
+      method: AuthMethods.Anonymous
+    }).then(auth => {
+      this.af.database.list('/users').push({
+        uid: auth.uid,
+        username: this.username
+      }).then( newUser => {
+        console.log("created new user");
+      }, error => {
+        console.log("error");
+      })
+    })
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
