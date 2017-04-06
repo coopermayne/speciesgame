@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the QuizData provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class QuizData {
 
   constructor(public http: Http) {
-    console.log('Hello QuizData Provider');
   }
 
+  getData(){
+    return this.http.get("https://peaceful-plains-81836.herokuapp.com/question/random").subscribe( res => {
+      console.log("hello");
+    })
+  }
 }
