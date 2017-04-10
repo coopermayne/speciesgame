@@ -10,7 +10,7 @@ export class QuizData {
   }
 
   getData(){
-    //return this.http.get("https://peaceful-plains-81836.herokuapp.com/question/random").map( res => res.json() )  
-    return this.http.get("http://localhost:3000/question/random").map( res => res.json() )  
+    return this.http.get("https://peaceful-plains-81836.herokuapp.com/question/random").map( res => res.json() )  
+    //return this.http.get("http://localhost:3000/question/random").map( res => res.json() )  
   }
 }
