@@ -3,4 +3,19 @@ page-page1 {
     max-height: 100%;
     width: auto;
   }
+
+  .disabled-buttons.correct-answer {
+    background-color: green;
+  }
+}
+
+.correct {
+  > div{
+    background-color: green !important;
+  }
+}
+.incorrect{
+  > div {
+    background-color: red !important;
+  }
 }

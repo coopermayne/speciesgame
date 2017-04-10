@@ -9,12 +9,11 @@
 </ion-header>
 
 <ion-content padding *ngIf="question">
-
   <img (click)="showNextImg()" src="{{img}}" />
 
   <ion-footer>
-    <button ion-button color="light" full *ngFor="let ans of question.a" (click)="clickAnswer(ans.correct)">
-      <span *ngIf="ans.correct">*</span>{{ ans.common_name }}
+    <button [disabled]="buttonsDisabled" [class.disabled-buttons]="buttonsDisabled" [class.correct-answer]="ans.correct" ion-button color="light" full *ngFor="let ans of question.a" (click)="clickAnswer(ans.correct)">
+      {{ ans.common_name }}
     </button> 
   </ion-footer>
 </ion-content>

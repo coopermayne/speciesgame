@@ -20,6 +20,7 @@ export class Page1 {
   question;
   imgIndex = 0;
   img;
+  buttonsDisabled:boolean = false;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Page1');
@@ -39,20 +40,30 @@ export class Page1 {
   }
 
   clickAnswer(correct) {
+    this.buttonsDisabled = !this.buttonsDisabled
     if(correct){
-      var message = "correct"
+      var message = "correct";
+      var toastClass = "correct";
+      var duration = 2000;
     } else {
-      var message = "incorrect"
+      var message = "incorrect";
+      var toastClass = "incorrect";
+      var duration = 4000;
     }
 
     let toast = this.toastCtrl.create({
       message: message,
-      duration: 2000
+      duration: duration,
+      position: "top",
+      cssClass: toastClass
     });
+
+    toast.onDidDismiss(() => {
+      this.setUpQuestion()
+      this.buttonsDisabled = !this.buttonsDisabled
+    });
+
     toast.present();
-
-    setTimeout(()=>{ this.setUpQuestion() }, 2000)
-
   }
 
   setUpQuestion() {
