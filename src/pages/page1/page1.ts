@@ -4,7 +4,7 @@ import { ToastController } from 'ionic-angular';
 
 
 import { NavController } from 'ionic-angular';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 import { QuizData } from '../../providers/quiz-data'
 
@@ -46,15 +46,16 @@ export class Page1 {
       var toastClass = "correct";
       var duration = 2000;
     } else {
-      var message = "incorrect";
+      var message = "incorrect - note correct answer";
       var toastClass = "incorrect";
-      var duration = 4000;
+      var duration = 10000;
     }
 
     let toast = this.toastCtrl.create({
       message: message,
       duration: duration,
       position: "top",
+      showCloseButton: true,
       cssClass: toastClass
     });
 
