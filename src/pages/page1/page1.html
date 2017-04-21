@@ -8,12 +8,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding *ngIf="question">
-  <img (click)="showNextImg()" src="{{img}}" />
-
-  <ion-footer>
-    <button [disabled]="buttonsDisabled" [class.disabled-buttons]="buttonsDisabled" [class.correct-answer]="ans.correct" ion-button color="light" full *ngFor="let ans of question.a" (click)="clickAnswer(ans.correct)">
-      {{ ans.common_name }}
-    </button> 
-  </ion-footer>
+<ion-content padding>
+  <img *ngIf="question" (click)="showNextImg()" src="{{img}}" />
 </ion-content>
+
+<ion-footer *ngIf="question">
+  <button *ngFor="let ans of question.a"
+          ion-button color="light" full
+          [disabled]="buttonsDisabled && !ans.correct" 
+          [class.disabled-buttons]="buttonsDisabled"
+          [class.correct-answer]="ans.correct"
+          (click)="clickAnswer(ans.correct)">
+    {{ ans.common_name }}
+  </button> 
+</ion-footer>
